@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import ms.saghafi.baloot.R
 import ms.saghafi.baloot.databinding.FragmentHomeBinding
@@ -19,6 +20,7 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var viewModel: HomeViewModel
     private var page = 1L
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,11 +35,17 @@ class HomeFragment : Fragment() {
 
         viewModel = activity.run {  ViewModelProvider(this!!).get(HomeViewModel::class.java) }
 
+        binding.homeFragmentToolbar.toolbarSimpleBackImageButton.setInvisible()
+        binding.homeFragmentToolbar.toolbarSimpleTitleTextView.text = getString(R.string.articles)
+
+
         val adapter = ArticlesAdapter(object : IOnItemClickListener<Article> {
             override fun onClick(clickedModel: Article) {
-                showToastMessage(clickedModel.description)
+                viewModel.selectedArticle = clickedModel
+                findNavController().navigate(R.id.action_homeFragment_to_articleFragment)
             }
         })
+
         binding.homeFragmentRecyclerView.layoutManager = LinearLayoutManager(context)
         binding.homeFragmentRecyclerView.adapter = adapter
 

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarSimple"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@drawable/toolbar_background"
+            app:contentInsetEnd="0dp"
+            app:contentInsetStart="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/toolbarSimpleBackImageButton"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="4dp"
+                    android:background="@drawable/hover_oval"
+                    android:contentDescription="@string/app_name"
+                    app:srcCompat="@drawable/ic_back_foreground_24dp"
+                    android:rotation="180"
+                    />
+
+
+                <TextView
+                    android:id="@+id/toolbarSimpleTitleTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/iran_sans_mobile"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:gravity="center"
+                    />
+
+                <ImageButton
+                    android:id="@+id/toolbarSimpleMenuImageButton"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="4dp"
+                    android:background="@drawable/hover_oval"
+                    android:contentDescription="@string/app_name"
+                    android:visibility="invisible"
+                    app:srcCompat="@drawable/ic_back_foreground_24dp" />
+
+            </LinearLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+</layout>

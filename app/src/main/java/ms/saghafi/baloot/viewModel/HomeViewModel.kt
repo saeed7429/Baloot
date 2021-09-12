@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import ms.saghafi.baloot.utils.ApiStatus
 import kotlinx.coroutines.launch
+import ms.saghafi.baloot.model.Article
 import ms.saghafi.baloot.room.ArticlesRepository
 import ms.saghafi.baloot.room.LocalDatabase
 import retrofit2.HttpException
@@ -26,6 +27,8 @@ class HomeViewModel(application: Application) : AndroidViewModel(application){
 
     private val articlesRepository = ArticlesRepository(LocalDatabase.getDatabase(application))
     val allArticles = articlesRepository.allArticles
+
+    lateinit var selectedArticle: Article
 
     fun getArticles(page: Long){
         viewModelScope.launch {
