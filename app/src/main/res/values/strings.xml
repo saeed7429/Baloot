@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">بلوط</string>
+    <string name="splash_screen_title">مدیریت ثروت هوشمند</string>
+    <string name="profile">پروفایل</string>
+    <string name="home">خانه</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="clear_cache">پاک سازی حافظه موقت</string>
+</resources>
