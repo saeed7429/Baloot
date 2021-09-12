@@ -39,13 +39,18 @@ class HomeViewModel(application: Application) : AndroidViewModel(application){
                 articlesRepository.refreshArticle("android",apiKey,20,page)
                 _status.value = ApiStatus.DONE
             } catch (exception: HttpException) {
-                if (exception.code() == 426)
-                    _message.value = "خبر دیگری جهت نمایش موجود نیست"
+
+                when (exception.code()) {
+                    426 -> _message.value = "خبر دیگری جهت نمایش موجود نیست"
+                    429 -> _message.value = "محدودیت تعداد درخواست های روزانه. لطفا بعدا تلاش نمایید"
+                    else -> _message.value = "بروز خطای ناشناخته از سمت سرور"
+                }
                 _status.value = ApiStatus.ERROR
             } catch (exception: Exception) {
                 _message.value = exception.localizedMessage
                 _status.value = ApiStatus.ERROR
             }
+            _message.value = ""
         }
     }
 
