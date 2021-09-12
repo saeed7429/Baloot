@@ -34,13 +34,16 @@ class ArticleFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = activity.run {  ViewModelProvider(this!!).get(HomeViewModel::class.java) }
 
+        // Pass Current Article To Layout DataBinding Variable:
         binding.article = viewModel.selectedArticle
 
+        // Toolbar Settings:
         binding.articleFragmentToolbar.toolbarSimpleBackImageButton.setOnClickListener {
             findNavController().navigateUp()
         }
         binding.articleFragmentToolbar.toolbarSimpleTitleTextView.text = getString(R.string.article_details)
 
+        // Load Image With Picasso:
         viewModel.selectedArticle.urlToImage?.let {
             Picasso.get()
                 .load(it)
@@ -48,6 +51,7 @@ class ArticleFragment : Fragment() {
                 .into(binding.articleFragmentImageView)
         }
 
+        // Open Article Link When Click On Source Name:
         binding.articleFragmentSourceTextView.setOnClickListener {
             val uri = Uri.parse(viewModel.selectedArticle.url)
             val intent = Intent(Intent.ACTION_VIEW, uri)

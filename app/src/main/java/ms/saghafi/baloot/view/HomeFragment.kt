@@ -33,12 +33,14 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Initialize HomeViewModel As Shared ViewModel:
         viewModel = activity.run {  ViewModelProvider(this!!).get(HomeViewModel::class.java) }
 
+        // Toolbar Settings:
         binding.homeFragmentToolbar.toolbarSimpleBackImageButton.setInvisible()
         binding.homeFragmentToolbar.toolbarSimpleTitleTextView.text = getString(R.string.articles)
 
-
+        // Define Adapter For Articles List RecyclerView :
         val adapter = ArticlesAdapter(object : IOnItemClickListener<Article> {
             override fun onClick(clickedModel: Article) {
                 viewModel.selectedArticle = clickedModel
@@ -46,15 +48,19 @@ class HomeFragment : Fragment() {
             }
         })
 
+        // RecyclerView Settings:
         binding.homeFragmentRecyclerView.layoutManager = LinearLayoutManager(context)
         binding.homeFragmentRecyclerView.adapter = adapter
 
+        // Get First Page Of Articles:
         viewModel.getArticles(page)
 
+        // Observe ViewModel Articles For Update Adapter List:
         viewModel.allArticles.observe(viewLifecycleOwner,{
             adapter.submitList(it)
         })
 
+        // Observe ViewModel Message For Toast it:
         viewModel.message.observe(viewLifecycleOwner,{
             if (it.isNotBlank())
                 showToastMessage(it)
@@ -62,6 +68,7 @@ class HomeFragment : Fragment() {
 
         addScrollEndListener()
 
+        // Set Click Listener For Delete Cache Floating Action Button To Clear Local Cache:
         binding.homeFragmentDeleteCacheFloatingActionButton.setOnClickListener {
             viewModel.deleteArticles()
             page = 1
@@ -69,6 +76,7 @@ class HomeFragment : Fragment() {
             addScrollEndListener()
         }
 
+        // Observe ViewModel Status For Show And Hide ProgressBar:
         viewModel.status.observe(viewLifecycleOwner,{
             when(it){
                 ApiStatus.LOADING -> binding.homeFragmentProgressBar.setVisible()
@@ -77,6 +85,7 @@ class HomeFragment : Fragment() {
         })
     }
 
+    // Add Scroll To End Listener For Request Next Page From Api:
     private fun addScrollEndListener(){
         binding.homeFragmentRecyclerView.addOnScrolledToEnd {
             page++

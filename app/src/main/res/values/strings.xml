@@ -3,11 +3,16 @@
     <string name="splash_screen_title">مدیریت ثروت هوشمند</string>
     <string name="profile">پروفایل</string>
     <string name="home">خانه</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="clear_cache">پاک سازی حافظه موقت</string>
     <string name="news">news</string>
     <string name="article_details">Article Details</string>
     <string name="articles">Articles</string>
     <string name="source">"Source: "</string>
+    <string name="about_me">درباره من</string>
+    <string name="full_name">محمدسعید ثقفی</string>
+    <string name="github">Github</string>
+    <string name="linkedin">Linkedin</string>
+    <string name="about_me_text">
+        از همون 10 سال پیش که برنامه نویسی رو شروع کردم متوجه شدم علاقه ی خاصی به این کار دارم ولی عوض کردن مداوم زمینه فعالیت و این شاخه به اون شاخه پریدن زیادم باعث شد به یه برنامه نویس حرفه ای تبدیل نشم. از 5 سال پیش تصمیم گرفتم یکی از زبان برنامه نویسی رو به صورت حرفه ای یاد بگیرم و انتخاب اولم سی شارپ بود. بعد از این که یکی دو سال برنامه نویسی ویندوز فرم انجام دادم حس کردم اندروید آینده ی بهتری داره و شروع به یادگیری برنامه نویسی اندروید کردم. از سال 98 به عنوان برنامه نویس اندروید و به صورت تمام وقت در پارک علم و فناوری یزد مشغول به کار شدم اما با توجه به علاقه ای که به پیشرفت شغلی مستمر داشتم و نبود زمینه ی پیشرفت کافی توی شهر یزد تصیم گرفتم به تهران نقل مکان کنم تا بتونم توی محیط حرفه ای تری کار کنم. از درگیر شدن با چالش های جدید و یادگیری مستمر لذت میبرم و تمام تلاشم رو به کار خواهم گرفت تا شرکتی که من رو استخدام کرده ازم راضی باشه
+    </string>
 </resources>

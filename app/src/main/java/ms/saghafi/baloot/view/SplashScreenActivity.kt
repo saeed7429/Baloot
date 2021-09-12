@@ -24,6 +24,7 @@ class SplashScreenActivity : AppCompatActivity() {
         setStatusBarWhite()
         runAnimation()
 
+        // Go to Main Activity After 3 Seconds:
         Handler(Looper.getMainLooper()).postDelayed({
             startMainActivity()
         }, 3000)

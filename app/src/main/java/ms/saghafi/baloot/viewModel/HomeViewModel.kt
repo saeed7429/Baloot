@@ -28,8 +28,10 @@ class HomeViewModel(application: Application) : AndroidViewModel(application){
     private val articlesRepository = ArticlesRepository(LocalDatabase.getDatabase(application))
     val allArticles = articlesRepository.allArticles
 
+    // Selected Article For Pass It From Home Fragment To Article Fragment
     lateinit var selectedArticle: Article
 
+    // Load Requested Page Articles And Save it To Local Database:
     fun getArticles(page: Long){
         viewModelScope.launch {
             _status.value = ApiStatus.LOADING
@@ -47,6 +49,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application){
         }
     }
 
+    // Delete Articles From Local Database (Delete Cache) :
     fun deleteArticles(){
         viewModelScope.launch {
             articlesRepository.deleteAll()
